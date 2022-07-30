@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>血圧判定</title>
+  <script language="javascript" type="text/javascript">
+
+        function onButtonClick() {
+            var val1 = document.forms.form1.textBox1.value;
+            var val2 = document.forms.form1.textBox2.value;
+            var target1 = document.getElementById("output1");
+            if (val1 == "" || val2 == ""){
+                    //条件に一致する場合(空の場合)
+                    alert("未入力情報があります、入力してください。");    //エラーメッセージを出力
+                    return false;    //送信ボタン本来の動作をキャンセルします
+                }else
+                // {
+                //     //条件に一致しない場合(メールアドレスが入力されている場合)
+                //     return true;    //送信ボタン本来の動作を実行します
+                // }
+
+ 
+            if(val1 >= 140 || val2 >= 90) {
+                target1.innerHTML = "高血圧です。";
+            }
+            else if (val1 < 120 && val2 < 80 ) {
+                target1.innerHTML = "正常血圧です。";
+            } 
+            else if(val1 <130 && val2 < 80) {
+                target1.innerHTML = "正常高値血圧です。";
+            } 
+            else if(val1 < 140 || val2 < 90) {
+                target1.innerHTML = "高血圧ではないが高めの血圧です。";
+            } 
+
+        }
+  </script>
+</head>
+<body>
+  <form action="" id="form1">
+    <div>最高血圧を入力してください。</div>
+    <input id="textBox1" type="text" value="" />
+    <div>最低血圧を入力してください。</div>
+    <input id="textBox2" type="text" value="" />
+    <input type="button" value="判定" onclick="return onButtonClick();" />
+  </form>
+  <div id="output1"></div>
+</body>
+</html>
